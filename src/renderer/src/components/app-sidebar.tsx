@@ -7,7 +7,6 @@ import {
   Frame,
   GalleryVerticalEnd,
   Map,
-  PieChart,
   SquareTerminal
 } from 'lucide-react'
 
@@ -22,13 +21,14 @@ import {
   SidebarHeader,
   SidebarRail
 } from '@renderer/components/ui/sidebar'
+import { NavHomePage } from './nav-homepage'
 
 // This is sample data.
 const data = {
   user: {
-    name: 'shadcn',
+    name: 'User',
     email: 'm@example.com',
-    avatar: '/avatars/shadcn.jpg'
+    avatar: '/user/BestStar.jpg' // Use relative path
   },
   teams: [
     {
@@ -47,9 +47,16 @@ const data = {
       plan: 'Free'
     }
   ],
-  navMain: [
+  Information: [
     {
-      title: 'Schema',
+      name: 'Map',
+      url: '#',
+      icon: Map
+    }
+  ],
+  mySchema: [
+    {
+      title: 'My Schema',
       url: '#',
       icon: SquareTerminal,
       isActive: true,
@@ -65,21 +72,30 @@ const data = {
       ]
     }
   ],
-  projects: [
+  myWorkSpace: [
     {
-      name: 'Design Engineering',
+      title: 'My WorkSpace',
       url: '#',
-      icon: Frame
-    },
-    {
-      name: 'Sales & Marketing',
-      url: '#',
-      icon: PieChart
-    },
-    {
-      name: 'Travel',
-      url: '#',
-      icon: Map
+      icon: Frame,
+      isActive: true,
+      items: [
+        {
+          title: 'Contract Blocks',
+          url: '#'
+        },
+        {
+          title: 'Select Blocks',
+          url: '#'
+        },
+        {
+          title: 'Operate Blocks',
+          url: '#'
+        },
+        {
+          title: 'Merge Blocks',
+          url: '#'
+        }
+      ]
     }
   ]
 }
@@ -91,8 +107,10 @@ export function AppSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
         <TeamSwitcher teams={data.teams} />
       </SidebarHeader>
       <SidebarContent>
-        <NavMain items={data.navMain} />
-        <NavProjects projects={data.projects} />
+        <NavHomePage />
+        <NavProjects projects={data.Information} />
+        <NavMain items={data.mySchema} label="Schema" />
+        <NavMain items={data.myWorkSpace} label="WorkSpace" />
       </SidebarContent>
       <SidebarFooter>
         <NavUser user={data.user} />

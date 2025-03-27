@@ -8,7 +8,6 @@ import Page from './app/page'
 function App(): JSX.Element {
   return (
     <>
-      {/* <Layout children={ <></> } /> */}
       <Page />
       {/* <HashRouter>
         <Routes>

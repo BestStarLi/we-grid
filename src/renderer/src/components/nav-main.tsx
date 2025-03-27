@@ -19,7 +19,8 @@ import {
 } from '@renderer/components/ui/sidebar'
 
 export function NavMain({
-  items
+  items,
+  label
 }: {
   items: {
     title: string
@@ -31,10 +32,11 @@ export function NavMain({
       url: string
     }[]
   }[]
+  label: string
 }) {
   return (
     <SidebarGroup>
-      <SidebarGroupLabel>Schema</SidebarGroupLabel>
+      <SidebarGroupLabel>{label}</SidebarGroupLabel>
       <SidebarMenu>
         {items.map(item => (
           <Collapsible
